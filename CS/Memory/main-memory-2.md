@@ -1,9 +1,5 @@
 # 세그먼테이션(Segmentation)
 
-## 프로그램의 사용자 관점
-
-![Untitled](https://s3-us-west-2.amazonaws.com/secure.notion-static.com/d80c963e-b63f-4bd7-879e-d0ef1008ff99/Untitled.png)
-
 ## 세그먼테이션 하드웨어
 
 - 논리 주소는 두 부분으로 구성 : segement-number, offset
