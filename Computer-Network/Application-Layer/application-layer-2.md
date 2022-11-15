@@ -106,10 +106,10 @@
 - DNS는 자원 레코드(resource record, RR)를 저장하는 분산 데이터베이스
 > RR format : (name, value, type, ttl)
 - type 4가지 정리
-    - Type = A (host Address) : name은 호스트네임, valuse
 
-|제목|내용|설명|
+|Type|name|value|
 |------|---|---|
-|테스트1|테스트2|테스트3|
-|테스트1|테스트2|테스트3|
-|테스트1|테스트2|테스트3|
+|A(host Address)|호스트 네임|IP 주소|
+|CNAME(Canonical NAME)|별칭 호스트네임|정식 호스트 네임|
+|NS(Name Server)|도메인|책임 네임 서버의 호스트 네임|
+|MX(Mail eXchange)|별칭 호스트 네임|메일서버의 정식 호스트 네임|
