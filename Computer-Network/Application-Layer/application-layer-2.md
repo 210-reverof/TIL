@@ -66,3 +66,36 @@
 - 매일 수 조개의 질의 처리 : 쓰기보다는 읽기 위주, 성능이 중요
 - 각 기관, 조직 별로 물리적으로 분산 : 수 백만개의 서로 다른 기관들이 레코드에 책임
 - 신뢰성, 보안이 중요
+
+
+### DNS 분산 계층 데이터베이스
+
+- DNS 클라이언트가 [www.naver.com](http://www.naver.com) 호스트 네임의 IP 주소를 질의하는 과정
+    - .com의 DNS 서버를 찾기 위해 루트(root) 서버에 질의
+    - amazon.com의 DNS 서버 주소를 위해 .com의 DNS 서버(TLD 서버, top-level domain server)에 질의
+    - [www.naver.com](http://www.naver.com) 의 IP 주소를 얻기 위해 naver.com의 DNS 서버 (책임 서버, authoritative server)에 질의
+
+### DNS 루트 네임 서버
+
+- 질의된 호스트 네임을 해결하지 못한 (IP 주소를 알지 못하는) 네임 서버들이 최종적으로 접촉
+- ICANN (Internet Corporation for Assigned Names and Numbers) : 루트 네임 서버 관리
+
+### TLD 서버 (Top-Level Domain Servers)
+
+- .com, .org, .net, .edu 등과 같은 상위 레벨 도메인과 .kr, .uk, .fr, .jp 등과 같은 국가의 상위 레벨 도메인에 대해 책임
+    - Network Solutions 사 : .com, .net
+    - Educause : .edu
+- 책임 DNS 서버 (Authoriatitve DNS servers)
+    - 기관(회사, 대학 등)의 서버(웹 서버, 메일 서버 등)의 호스트 네임을 IP 주소로 매핑
+    - 기관이나 서비스 제공자 등이 서버를 관리
+- 로컬 DNS 네임 서버는 DNS 계층에 속하지 않음
+
+### DNS 캐싱
+
+- 네임 서버는 어떤 이름에 대해 받은 응답 정보를 캐싱하고 저장된 정보를 사용하여 질의에 즉시 응답
+    - 캐싱으로 응답 시간이 개선
+    - 캐싱된 정보는 일정 시간이 지나면 소멸
+    - 일반적으로 로컬 네임 서버에 TLD 서버들이 캐싱 → 루트까지 갈 일 적음
+- 캐싱된 정보가 최신 값이 아닐 수도 있음
+    - 호스트의 IP 주소가 변경된 경우
+    - 최선의 노력 방식으로 이름-주소 변환 시도!
